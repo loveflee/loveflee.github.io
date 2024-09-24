@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='home assistant NVR'>
+<title>Docker Compose Frigate - NVR</title>
+
+<link rel='canonical' href='https://loveflee.github.io/p/frigate/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Docker Compose Frigate - NVR'>
+<meta property='og:description' content='home assistant NVR'>
+<meta property='og:url' content='https://loveflee.github.io/p/frigate/'>
+<meta property='og:site_name' content='填過的那些坑'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2023-12-14T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-14T00:00:00&#43;00:00'/><meta property='og:image' content='https://loveflee.github.io/p/frigate/002.jpg' />
+<meta name="twitter:title" content="Docker Compose Frigate - NVR">
+<meta name="twitter:description" content="home assistant NVR"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://loveflee.github.io/p/frigate/002.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu05f206e38d9dbb09ca72dced91fba511_47864_300x0_resize_box_3.png" width="300"
+                            height="296" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">填過的那些坑</a></h1>
+            <h2 class="site-description">Linux is free!!My time is free??</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#frigate-官方網站-更新於20240828">Frigate 官方網站 更新於2024/08/28</a></li>
+    <li><a href="#nvidia-docker-composeyaml">Nvidia docker-compose.yaml</a></li>
+    <li><a href="#nvidia-configcnfigyml">Nvidia config/cnfig.yml</a></li>
+    <li><a href="#intel-gpu-docker-composeyaml">Intel Gpu docker-compose.yaml</a></li>
+    <li><a href="#intel-gpu-configconfigyml">Intel Gpu config/config.yml</a></li>
+    <li><a href="#ha-onvif-and-ptz">HA onvif and ptz</a></li>
+    <li><a href="#ha-frigate-card">HA frigate card</a></li>
+    <li><a href="#line-通知觸發偵測">Line 通知觸發偵測</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/frigate/">
+                <img src="/p/frigate/002_hu0ef56f75a8024440a0638948000910e6_132224_800x0_resize_q75_box.jpg"
+                        srcset="/p/frigate/002_hu0ef56f75a8024440a0638948000910e6_132224_800x0_resize_q75_box.jpg 800w, /p/frigate/002_hu0ef56f75a8024440a0638948000910e6_132224_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="272" 
+                        loading="lazy"
+                        alt="Featured image of post Docker Compose Frigate - NVR" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/docker/" >
+                docker
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/frigate/">Docker Compose Frigate - NVR</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            home assistant NVR
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 14, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    10 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="frigate-官方網站-更新於20240828">Frigate 官方網站 更新於2024/08/28</h2>
+<p><a class="link" href="https://frigate.video/"  target="_blank" rel="noopener"
+    >https://frigate.video/</a></br>
+說明文件</br>
+<a class="link" href="https://docs.frigate.video/"  target="_blank" rel="noopener"
+    >https://docs.frigate.video/</a></br></p>
+<h2 id="nvidia-docker-composeyaml">Nvidia docker-compose.yaml</h2>
+<p>ubuntu 22.04 docker compose frigate/</br>
+注意：nvidia-drive nvidia-docker2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">version: &#39;3.9&#39;
+
+services:
+
+  frigate:
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate:0.12.0-tensorrt
+#    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    shm_size: &#34;512mb&#34; # update for your cameras based on calculation above
+#    devices:
+#      - /dev/bus/usb:/dev/bus/usb  #coral tpu AI辨識
+#      - /dev/apex_0:/dev/apex_0 #直通 PCIe Coral,driver &gt; https://coral.ai/docs/m2/get-started/#2a-on-linux
+#      - /dev/dri/renderD128 # for intel gpu hardware
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+      - ./trt-models:/trt-models
+#      - ./nvr-data:/media/frigate
+#      - /vm31/nvr-data:/media/frigate
+      - /root/smb:/media/frigate
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - &#34;5000:5000&#34;
+      - &#34;1935:1935&#34; # RTMP feeds
+      - &#34;8554:8554&#34; # RTSP feeds
+      - &#34;8555:8555/tcp&#34; # WebRTC over tcp
+      - &#34;8555:8555/udp&#34; # WebRTC over udp
+    environment:
+      FRIGATE_RTSP_PASSWORD: &#34;passwd&#34;
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,video,utility
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="nvidia-configcnfigyml">Nvidia config/cnfig.yml</h2>
+<p>官網配置說明</br>
+<a class="link" href="https://docs.frigate.video/configuration/"  target="_blank" rel="noopener"
+    >https://docs.frigate.video/configuration/</a></br>
+tensorrt 建構</br>
+<a class="link" href="https://docs.frigate.video/configuration/detectors#nvidia-tensorrt-detector"  target="_blank" rel="noopener"
+    >https://docs.frigate.video/configuration/detectors#nvidia-tensorrt-detector</a></br></br>
+<img src="/p/frigate/nvidia.jpg"
+	width="540"
+	height="645"
+	srcset="/p/frigate/nvidia_hu5ec74bd0eebd2264e24de2aafe6380e1_24122_480x0_resize_q75_box.jpg 480w, /p/frigate/nvidia_hu5ec74bd0eebd2264e24de2aafe6380e1_24122_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="nvidia-detector"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="83"
+		data-flex-basis="200px"
+	
+></p>
+</br>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ui:
+  use_experimental: false
+  live_mode: mse
+
+mqtt:
+  enabled: true
+  host: ha ip
+  port: 1883
+  topic_prefix: frigate
+  client_id: frigate
+  user: mqttuser
+  password: mqttuser
+  stats_interval: 300
+
+ffmpeg:
+  hwaccel_args: preset-nvidia-h264 #nvidia gpu
+  output_args:
+    record: preset-record-generic-audio-aac #sound out
+#  hwaccel_args: preset-vaapi
+#錄影秒數
+record:
+  expire_interval: 15
+  enabled: True
+  retain:
+    days: 7
+    mode: motion
+# 註解掉 mode:連續錄影 motion 運動檢測 active_objects 物體移動 all 包含運動跟物體
+  events:
+#    pre_capture: 3 #偵測錄影前提前1秒
+#    post_capture: 3 #偵測錄影後剪輯往後3秒
+    retain:
+      default: 14
+      mode: active_objects
+      objects:
+        person: 7
+
+#偵測器(運動檢測)
+detectors:
+  tensorrt:
+    type: tensorrt
+    device: 0 #This is the default, select the first GPU
+
+model:
+  path: /trt-models/yolov7-tiny-416.trt
+  input_tensor: nchw
+  input_pixel_format: rgb
+  width: 416
+  height: 416
+
+objects:
+  track:
+    - person
+  filters:
+    person:
+      min_area: 5000
+      max_area: 100000
+
+snapshots:
+  enabled: True
+  clean_copy: True
+  timestamp: False
+  bounding_box: True
+  crop: False
+  height: 175
+  required_zones: []
+  retain:
+    default: 7
+    objects:
+      person: 7
+
+
+#錄影時間戳設置參數
+timestamp_style:
+  position: &#34;tl&#34; #&#34;tl&#34; (top left), &#34;tr&#34; (top right), &#34;bl&#34; (bottom left), &#34;br&#34; (bottom right)
+  format: &#34;%m/%d/%Y %H:%M:%S&#34;
+  color:
+    red: 255
+    green: 255
+    blue: 255
+  thickness: 2
+  effect: shadow
+
+go2rtc:
+  streams:
+    gate:
+      - &#34;ffmpeg:rtsp://admin:pwsswd@192.168.88.53:554/stream1#video=copy#audio=copy#audio=aac&#34;
+    gate_sub:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.53:554/stream2#video=copy#audio=copy#audio=aac&#34;
+    3f:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.54:554/stream1#video=copy#audio=copy#audio=aac&#34;
+    3f_sub:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.54:554/stream2#video=copy#audio=copy#audio=aac&#34;
+    webrtc:
+      candidates:
+        - 127.0.0.1:8555
+        - stun:8555
+cameras:
+  gate:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/gate
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/gate_sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    record:
+      enabled: True
+    detect:
+      width: 640
+      height: 360
+      fps: 7
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          mask:
+            - 0,190,135,128,138,90,252,95,270,149,483,165,561,360,640,360,640,0,0,0
+          min_score: 0.4
+          threshold: 0.5
+          min_area: 700
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      crop: True
+      height: 500
+      retain:
+        default: 3
+    zones:
+      zone_0:
+        coordinates: 282,360,552,360,482,164,271,163,271,90,225,92,141,85,136,129,0,201,0,360
+    motion:
+      mask:
+        - 478,178,566,360,640,360,640,0,359,0,0,0,0,89,273,90,279,152
+        - 148,135,159,0,0,0,0,198
+
+  3f:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/3f
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/3f_sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    record:
+      enabled: True
+    detect:
+      width: 640
+      height: 360
+      fps: 5
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          mask:
+            - 0,0,0,311,640,307,640,360,0,360
+          min_score: 0.4
+          threshold: 0.5
+          min_area: 700
+    zones:
+      zone_0:
+        coordinates: 640,360,640,42,0,39,0,360
+    motion:
+      mask:
+        - 640,110,640,0,0,0,0,33
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      crop: True
+      height: 500
+      retain:
+        default: 3
+
+#detectors:
+#  coral:
+#    type: edgetpu
+#    device: usb
+
+rtmp:
+  enabled: false
+
+birdseye:
+  enabled: True
+  restream: False
+  width: 1920
+  height: 1080
+  quality: 8
+  mode: continuous
+
+live:
+  height: 640
+  quality: 1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="intel-gpu-docker-composeyaml">Intel Gpu docker-compose.yaml</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">version: &#39;3.9&#39;
+
+services:
+
+  frigate:
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate:stable
+    cap_add:
+      - CAP_PERFMON
+    shm_size: &#34;128mb&#34; # update for your cameras based on calculation above
+    devices:
+#      - /dev/bus/usb:/dev/bus/usb  #coral tpu AI辨識
+#      - /dev/apex_0:/dev/apex_0 #直通 PCIe Coral,driver &gt; https://coral.ai/docs/m2/get-started/#2a-on-linux
+      - /dev/dri/renderD128 # for intel gpu hardware
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./config:/config
+#      - ./nvr-data:/media/frigate
+      - /root/smb:/media/frigate
+
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - &#34;5000:5000&#34;
+      - &#34;1935:1935&#34; # RTMP feeds
+      - &#34;8554:8554&#34; # RTSP feeds
+      - &#34;8555:8555/tcp&#34; # WebRTC over tcp
+      - &#34;8555:8555/udp&#34; # WebRTC over udp
+    environment:
+      FRIGATE_RTSP_PASSWORD: &#34;passwd&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="intel-gpu-configconfigyml">Intel Gpu config/config.yml</h2>
+<p>官網配置說明</br>
+<a class="link" href="https://docs.frigate.video/configuration/"  target="_blank" rel="noopener"
+    >https://docs.frigate.video/configuration/</a></br>
+OpenVINO檢測器</br>
+<a class="link" href="https://docs.frigate.video/configuration/detectors#openvino-detector"  target="_blank" rel="noopener"
+    >https://docs.frigate.video/configuration/detectors#openvino-detector</a></br></br>
+<img src="/p/frigate/intelgpu.jpg"
+	width="536"
+	height="609"
+	srcset="/p/frigate/intelgpu_hu5cc007c1b4178e2c60d1ebd5262ad464_41584_480x0_resize_q75_box.jpg 480w, /p/frigate/intelgpu_hu5cc007c1b4178e2c60d1ebd5262ad464_41584_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="Intel-gpu"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="88"
+		data-flex-basis="211px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ui:
+  use_experimental: false
+  live_mode: mse
+
+mqtt:
+  enabled: true
+  host: ha ip
+  port: 1883
+  topic_prefix: frigate
+  client_id: frigate
+  user: mqttuser
+  password: mqttuser
+  stats_interval: 300
+#intel gpu 輸出聲音(錄影)
+ffmpeg:
+  hwaccel_args: preset-vaapi
+  output_args:
+    record: preset-record-generic-audio-aac
+#錄影秒數
+record:
+  expire_interval: 10
+  enabled: True
+  retain:
+    days: 7
+    mode: motion
+# 註解掉mode 7/24錄影 motion運動檢測 active_objects物體移動 all包含運動跟物體
+  events:
+    pre_capture: 4 #偵測錄影前提前1秒
+    post_capture: 3 #偵測錄影後剪輯往後3秒
+    retain:
+      default: 14
+      mode: active_objects
+      objects:
+        person: 7
+
+#偵測器(運動偵測)
+detectors:
+  ov:
+    type: openvino
+    device: AUTO
+    model:
+      path: /openvino-model/ssdlite_mobilenet_v2.xml
+
+model:
+  width: 300
+  height: 300
+  input_tensor: nhwc
+  input_pixel_format: bgr
+  labelmap_path: /openvino-model/coco_91cl_bkgr.txt
+
+objects:
+  track:
+    - person
+  filters:
+    person:
+      min_area: 5000
+      max_area: 100000
+
+snapshots:
+  enabled: True
+  clean_copy: True
+  timestamp: False
+  bounding_box: True
+  crop: False
+  height: 175
+  required_zones: []
+  retain:
+    default: 7
+    objects:
+      person: 7
+
+#錄影時間戳設置參數 thickness:字體大小 effect:字體陰影
+timestamp_style:
+  position: &#34;tl&#34;
+  format: &#34;%m/%d/%Y %H:%M:%S&#34;
+  color:
+    red: 255
+    green: 255
+    blue: 255
+  thickness: 2
+  effect: shadow
+
+go2rtc:
+  streams:
+    gate:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.53:554/stream1#video=copy#audio=copy#audio=aac&#34;
+    gate_sub:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.53:554/stream2#video=copy#audio=copy#audio=aac&#34;
+    3f:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.54:554/stream1#video=copy#audio=copy#audio=aac&#34;
+    3f_sub:
+      - &#34;ffmpeg:rtsp://admin:passwd@192.168.88.54:554/stream2#video=copy#audio=copy#audio=aac&#34;
+    webrtc:
+      candidates:
+        - 127.0.0.1:8555
+        - stun:8555
+
+cameras:
+  gate:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/gate
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/gate_sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    record:
+      enabled: True
+    detect:
+      width: 640
+      height: 360
+      fps: 5
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          mask:
+            - 0,190,135,128,138,90,252,95,270,149,483,165,561,360,640,360,640,0,0,0
+          min_score: 0.4
+          threshold: 0.5
+          min_area: 700
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      crop: True
+      height: 500
+      retain:
+        default: 3
+    zones:
+      zone_0:
+        coordinates: 282,360,552,360,482,164,271,163,271,90,225,92,141,85,136,129,0,201,0,360
+    motion:
+      mask:
+        - 478,178,566,360,640,360,640,0,359,0,0,0,0,89,273,90,279,152
+        - 148,135,159,0,0,0,0,198
+
+  3f:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/3f
+          input_args: preset-rtsp-restream
+          roles:
+            - record
+        - path: rtsp://127.0.0.1:8554/3f_sub
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+    record:
+      enabled: True
+    detect:
+      width: 640
+      height: 360
+      fps: 5
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          mask:
+#            - 0,360,640,360,640,47,0,44
+          min_score: 0.4
+          threshold: 0.5
+          min_area: 700
+    zones:
+      zone_0:
+        coordinates: 640,360,640,42,0,39,0,360
+    motion:
+      mask:
+        - 640,110,640,0,0,0,0,33
+    snapshots:
+      enabled: true
+      timestamp: true
+      bounding_box: true
+      required_zones:
+        - gateclose_in
+        - gate_whole_area
+      crop: True
+      height: 500
+      retain:
+        default: 3
+
+#detectors:
+#  coral:
+#    type: edgetpu
+#    device: usb
+
+rtmp:
+  enabled: false
+
+birdseye:
+  enabled: True
+  restream: False
+  width: 1920
+  height: 1080
+  quality: 8
+  mode: continuous
+
+live:
+  height: 640
+  quality: 1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ha-onvif-and-ptz">HA onvif and ptz</h2>
+<p>ha 先用 onvif camera 導入 ipcam</br>
+onvif 控制 ipcam </br>
+Ha 設定 &gt; 自動化 &gt; 腳本 &gt; yaml編輯</br>
+貼上後再用視覺化編輯 &gt; 連續 選取 ipcam</br>
+distance: 0.12 &lt; 移動速度調整 </br>
+</br>
+左</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: turn_left
+sequence:
+  - service: onvif.ptz
+    data:
+      pan: RIGHT
+      distance: 0.12
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+mode: single
+icon: mdi:arrow-left-bold-circle
+</code></pre></td></tr></table>
+</div>
+</div><p>右</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: turn_right
+sequence:
+  - service: onvif.ptz
+    data:
+      pan: LEFT
+      distance: 0.12
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+mode: single
+icon: mdi:arrow-right-bold-circle
+</code></pre></td></tr></table>
+</div>
+</div><p>上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: turn_up
+sequence:
+  - service: onvif.ptz
+    data:
+      distance: 0.12
+      tilt: DOWN
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+mode: single
+icon: mdi:arrow-up-bold-circle
+</code></pre></td></tr></table>
+</div>
+</div><p>下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: turn_down
+sequence:
+  - service: onvif.ptz
+    data:
+      distance: 0.12
+      tilt: UP
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+mode: single 
+icon: mdi:arrow-down-bold-circle 
+</code></pre></td></tr></table>
+</div>
+</div><p>預設點 (於 IPcam-APP 裡設定)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: preset1
+sequence:
+  - service: onvif.ptz
+    data:
+      distance: 0.12
+      preset: &#34;1&#34;
+      move_mode: GotoPreset
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+mode: single
+icon: mdi:arrow-collapse-all
+</code></pre></td></tr></table>
+</div>
+</div><p>拉近(放大物體)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: 3f_in
+sequence:
+  - service: onvif.ptz
+    data:
+      distance: 0.15
+      zoom: ZOOM_IN
+    target:
+      device_id: 1f5322054b437303a2af54ad0e6f053c
+mode: single
+icon: mdi:arrow-expand
+</code></pre></td></tr></table>
+</div>
+</div><p>拉遠(縮小物體)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: 3f_out
+sequence:
+  - service: onvif.ptz
+    data:
+      distance: 0.15
+      zoom: ZOOM_OUT
+    target:
+      device_id: 1f5322054b437303a2af54ad0e6f053c
+mode: single
+icon: mdi:arrow-collapse
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ha-frigate-card">HA frigate card</h2>
+<p>於 ha 內使用 frigate card</br>
+hacs 導入 frigate card</br>
+<img src="/p/frigate/ha.jpg"
+	width="740"
+	height="348"
+	srcset="/p/frigate/ha_huf0b8adca8c425f36f557ad078c7ff1dd_22934_480x0_resize_q75_box.jpg 480w, /p/frigate/ha_huf0b8adca8c425f36f557ad078c7ff1dd_22934_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="hacs"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="212"
+		data-flex-basis="510px"
+	
+></br>
+</br>
+垂直卡 ( frigate card 加 水平卡 - onvif 控制 )</br>
+<img src="/p/frigate/fr02.jpg"
+	width="364"
+	height="333"
+	srcset="/p/frigate/fr02_hu770f4fb2ea87ec53bcbe572219bb9008_18378_480x0_resize_q75_box.jpg 480w, /p/frigate/fr02_hu770f4fb2ea87ec53bcbe572219bb9008_18378_1024x0_resize_q75_box.jpg 1024w"
+	loading="lazy"
+	
+		alt="frigate card"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="109"
+		data-flex-basis="262px"
+	
+></br>
+entity: script.1702054234951</br>
+entity: script.1702057221703</br>
+entity: script.turn_down</br>
+entity: script.turn_right</br>
+4個 entity 為移動控制腳本 </br>
+需修改對應到正確名稱,建議各動作都檢查</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">type: vertical-stack
+cards:
+  - type: custom:frigate-card
+    cameras:
+      - camera_entity: camera.gate
+        live_provider: jsmpeg
+        hide: false
+    view:
+      timeout_seconds: 0
+      update_force: false
+      update_cycle_camera: false
+      default: live
+      update_seconds: 0
+    live:
+      preload: true
+      zoomable: true
+      lazy_load: true
+      microphone:
+        always_connected: true
+    menu:
+      buttons:
+        &#39;mute:&#39;:
+          enable: true
+        microphone:
+          enabled: true
+          alignment: matching
+          icon: mdi:microphone-settings
+          type: momentary
+      play:
+        enable: true
+        microphone:
+          enabled: true
+          alignment: matching
+          icon: mdi:microphone
+          type: momentary
+      alignment: bottom
+      style: outside
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: toggle
+        entity: script.1702054234951
+        name: L
+        icon_height: 20px
+      - type: custom:button-card
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: toggle
+        entity: script.1702057221703
+        name: Up
+        icon_height: 20px
+      - type: custom:button-card
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: toggle
+        entity: script.turn_down
+        name: Down
+        icon_height: 20px
+      - type: custom:button-card
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: toggle
+        entity: script.turn_right
+        name: R
+        icon_height: 20px
+      - type: custom:button-card
+        show_name: true
+        show_icon: true
+        tap_action:
+          action: toggle
+        entity: script.preset1
+        name: G-P
+        icon_height: 20px
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="line-通知觸發偵測">Line 通知觸發偵測</h2>
+<p>Line通知教學 Line Notify </br>
+<a class="link" href="https://github.com/loveflee/autosend-photo-inha-line"  target="_blank" rel="noopener"
+    >https://github.com/loveflee/autosend-photo-inha-line</a></br></br>
+設定 &gt; 自動化 &gt; 新增自動化 &gt; 右上三小點以YAML編輯</br>
+複製貼上後再以視覺化編輯去修正各個設置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias: 電動門移動達3秒偵測
+description: 車庫人形偵測
+trigger:
+  - platform: state
+    entity_id:
+      - binary_sensor.gate_person_occupancy
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+    to: &#34;on&#34;
+    from: &#34;off&#34;
+condition:
+  - condition: time
+    after: &#34;00:05:00&#34;
+    before: &#34;07:00:00&#34;
+    enabled: false
+action:
+  - service: notify.line_notification
+    data:
+      message: Gate all occupancy 移動偵測已達4秒
+  - service: camera.record
+    data:
+      lookback: 0
+      filename: /media/&#39;{{(&#39;%Y%m%d%H%M&#39;) }}&#39;.mp4
+      duration: 20
+    target:
+      device_id: 24ff4dd62b369f46d24f99486240f22f
+    enabled: false
+mode: single
+</code></pre></td></tr></table>
+</div>
+</div><!-- 貼圖要在同目錄 ![圖片說明會在圖下方](%E5%9C%96%E6%AA%94%E6%AA%94%E5%90%8D.jpg) -->
+<!--註解 -->
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">docker</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/grafana/">
+        
+        
+            <div class="article-image">
+                <img src="/p/grafana/grafana.e56880b6ed1b22cc7ca4e374f6f5b2b3_hu79784a093fb7c5c72dd38a1ce913641f_133743_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Nginx-Prometheus-Exporter"
+                        data-key="grafana" 
+                        data-hash="md5-5WiAtu0bIsx8pON09vWysw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Nginx-Prometheus-Exporter</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/hugo/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo/docker.9c74863482d01f8a03fa82ddade0de70_hu8fc112533065eda6f9a0c57ee748feb0_60918_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post docker compose Hugo"
+                        data-key="hugo" 
+                        data-hash="md5-nHSGNILQH4oD&#43;oLdreDecA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">docker compose Hugo</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/truenas-grafana/">
+        
+        
+            <div class="article-image">
+                <img src="/p/truenas-grafana/truenas-grafana.1a82d4157d1da8282db919f5416a2793_hubaa24e4ffe0beeb1b331d6145becaccd_69183_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Grafana 與 Truenas 花火"
+                        data-key="truenas-grafana" 
+                        data-hash="md5-GoLUFX0dqCgtuRn1QWonkw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Grafana 與 Truenas 花火</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Example Person
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

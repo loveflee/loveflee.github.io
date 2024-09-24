@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LXC on 填過的那些坑</title>
+        <link>https://loveflee.github.io/categories/lxc/</link>
+        <description>Recent content in LXC on 填過的那些坑</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Mon, 16 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loveflee.github.io/categories/lxc/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>modsecurity</title>
+        <link>https://loveflee.github.io/p/x/</link>
+        <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/p/x/</guid>
+        <description>&lt;img src="https://loveflee.github.io/p/x/modsecurity.png" alt="Featured image of post modsecurity" /&gt;&lt;h2 id=&#34;參考來源&#34;&gt;參考來源&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/owasp-modsecurity/ModSecurity&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github Modsecurity&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2024-09-16 當前為 OWASP_CRS/4.6.0&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/modsecurity-crs-docker&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;docker modsecurity&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/modsecurity-crs-docker/blob/main/docker-compose.yaml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;docker compose nginx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.modsecurity.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;參數設置說明&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/modsecurity-crs-docker/blob/main/docker-compose.yaml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官版 docker-compose.yaml&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;docker-composeyaml&#34;&gt;docker-compose.yaml&lt;/h2&gt;
+&lt;p&gt;my docker-docmpose.yaml&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;version: &amp;#39;3&amp;#39;
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    container_name: waf
+    ports:
+      - &amp;#34;80:80&amp;#34;  # 將容器的80端口映射到主機的80端口
+      - &amp;#34;443:443&amp;#34;  # 如果需要 HTTPS，也可以映射443端口
+#      - &amp;#34;12081:8080&amp;#34;
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:rw  # 掛載自定義的 Nginx 配置文件
+      - ./main.conf:/etc/nginx/templates/main.conf:rw
+#      - ./conf.d:/etc/nginx/conf.d  # 可選：掛載自定義的 ModSecurity 配置文件
+      - ./mysite:/etc/nginx/mysite:rw
+      - ./ssl/domain:/etc/ssl/domain:ro
+      - ./crs:/etc/modsecurity.d/owasp-crs/crs:rw
+    environment:
+      - PARANOIA=1  # 設置 paranoia level, 默認是 PL1
+    restart: always
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;plugin&#34;&gt;plugin&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;主頁&lt;/a&gt; github&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/nextcloud-rule-exclusions-plugin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;nextcloud&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/wordpress-rule-exclusions-plugin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;WordPress&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;modsecurity-path&#34;&gt;Modsecurity path&lt;/h2&gt;
+&lt;p&gt;docker 裡的路徑結構&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;docker compose exec waf bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;modsecurity conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/modsecurity.d/modsecurity.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;rule path&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/modsecurity.d/owasp-crs/rules
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;plugin path 外掛放置路徑&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;/etc/modsecurity.d/owasp-crs/plugins
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;設置plugin&#34;&gt;設置plugin&lt;/h2&gt;
+&lt;p&gt;nginx conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;server {
+modsecurity on;
+modsecurity_rules_file /etc/modsecurity.d/owasp-crs/crs/cloud.conf;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;nextcloud plugin 替換  crs  為docker 路徑結構      /etc/modsecurity.d/owasp-crs/crs&lt;/p&gt;
+&lt;p&gt;cloud.conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 覆蓋請求限制
+# 限制有檔名的文件最大上傳 10GB = 131072000
+SecRequestBodyLimit 10737418240
+# 超過設置的拒絕
+SecRequestBodyLimitAction Reject
+# 限制沒有檔名的文件最大上傳 256k
+SecRequestBodyNoFilesLimit 262144
+# 為Localhost-nginx編譯連結器版本根據docker結構編修
+
+Include /etc/modsecurity.d/owasp-crs/crs/nextcloud-rule-exclusions-plugin/exclude.conf
+Include /etc/modsecurity.d/owasp-crs/crs/nextcloud-rule-exclusions-plugin/nextcloud-rule-exclusions-before.conf
+Include /etc/modsecurity.d/owasp-crs/crs/nextcloud-rule-exclusions-plugin/nextcloud-rule-exclusions-config.conf
+Include /etc/modsecurity.d/modsecurity.conf
+Include /etc/modsecurity.d/owasp-crs/crs-setup.conf
+Include /etc/modsecurity.d/owasp-crs/rules/*.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;exclude.conf&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;SecRule &amp;amp;TX:nextcloud-rule-exclusions-plugin_enabled &amp;#34;@eq 0&amp;#34; \
+    &amp;#34;id:9508010,\
+    phase:1,\
+    pass,\
+    nolog,\
+    ver:&amp;#39;nextcloud-rule-exclusions-plugin/1.2.0&amp;#39;,\
+    setvar:&amp;#39;tx.nextcloud-rule-exclusions-plugin_enabled=1&amp;#39;&amp;#34;
+
+# 有些檔名會被封鎖 排除目錄規則 id=930130 在特定目錄下的應用
+SecRule REQUEST_URI &amp;#34;@beginsWith /remote.php/dav/files/username1/blog/&amp;#34; \
+     &amp;#34;id:10001,phase:1,nolog,pass,t:none,ctl:ruleRemoveById=930130&amp;#34;
+# 說明：
+# - id:10001 是這條規則的 ID，您可以使用不同的 ID 來區分。
+# - phase:1 指定規則在哪個階段執行（通常在第 1 階段應用）。
+# - nolog 和 pass 指示當匹配時不記錄日志並允許請求繼續。
+# - ctl:ruleRemoveById=930130 表示在匹配到此 URI 時排除規則 930130 的應用。
+# 使用正則表達式匹配多個目錄
+#SecRule REQUEST_URI &amp;#34;@rx ^/remote\.php/dav/files/(username1/blog|username2/projects|username3/documents)/&amp;#34; \
+#    &amp;#34;id:10004,phase:1,nolog,pass,t:none,ctl:ruleRemoveById=930130&amp;#34;
+
+# 放寬文件上傳限制
+SecRule REQUEST_FILENAME &amp;#34;@rx /(?:remote\.php|index\.php)/&amp;#34; \
+    &amp;#34;id:10002,phase:2,t:none,nolog,pass,setvar:&amp;#39;tx.restricted_extensions=.bak/ .config/ .conf/&amp;#39;&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;根據nextcloud plugin要求 外掛命名為 crs/nextcloud-rule-exclusions-plugin&lt;/p&gt;
+&lt;p&gt;後將兩個conf放置其下 nextcloud-rule-exclusions-before.conf 與 nextcloud-rule-exclusions-config.conf&lt;/p&gt;
+&lt;p&gt;來原: &lt;a class=&#34;link&#34; href=&#34;https://github.com/coreruleset/nextcloud-rule-exclusions-plugin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;nextcloud&lt;/a&gt; plugin&lt;/p&gt;
+&lt;h2 id=&#34;加大apache2容器上傳&#34;&gt;加大apache2容器上傳&lt;/h2&gt;
+&lt;p&gt;解決在網頁上傳 413 問題&lt;/p&gt;
+&lt;p&gt;file/Dockerfile-app&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;# 增加上傳 16GB = 17179869184
+RUN echo &amp;#34;LimitRequestBody 17179869184&amp;#34; &amp;gt;&amp;gt; /etc/apache2/apache2.conf
+
+# 重啟 Apache 載入新設定
+RUN apachectl restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;至此 modsceurity 設置完成&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>pve on 填過的那些坑</title>
+        <link>https://loveflee.github.io/categories/pve/</link>
+        <description>Recent content in pve on 填過的那些坑</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Wed, 24 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loveflee.github.io/categories/pve/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>用 Proxmox 構建家用伺服器</title>
+        <link>https://loveflee.github.io/p/pve/</link>
+        <pubDate>Wed, 24 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/p/pve/</guid>
+        <description>&lt;img src="https://loveflee.github.io/p/pve/a0pve01.png" alt="Featured image of post 用 Proxmox 構建家用伺服器" /&gt;&lt;h2 id=&#34;proxmox&#34;&gt;proxmox&lt;/h2&gt;
+&lt;p&gt;開源作業系統 Proxmox&lt;/p&gt;
+&lt;h2 id=&#34;vm-home-assistant&#34;&gt;Vm: Home Assistant&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://loveflee.github.io/p/pve/a0pve02.png&#34;
+	width=&#34;803&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://loveflee.github.io/p/pve/a0pve02_hu8d0ef8a624ae550d9fc79f90fd952556_55170_480x0_resize_box_3.png 480w, https://loveflee.github.io/p/pve/a0pve02_hu8d0ef8a624ae550d9fc79f90fd952556_55170_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Vm Home Assistant&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;312px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vm HA&lt;/p&gt;
+&lt;h2 id=&#34;lxc-docker-nextcloud&#34;&gt;Lxc Docker Nextcloud&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://loveflee.github.io/p/pve/a0pve03.png&#34;
+	width=&#34;1366&#34;
+	height=&#34;607&#34;
+	srcset=&#34;https://loveflee.github.io/p/pve/a0pve03_hub605cdb7be810e0ad5005db71977325c_91715_480x0_resize_box_3.png 480w, https://loveflee.github.io/p/pve/a0pve03_hub605cdb7be810e0ad5005db71977325c_91715_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker-Fpm-Nextcloud&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;540px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Lxc Docker fpm-nextcloud-nginx&lt;/p&gt;
+&lt;h2 id=&#34;lxc-docker-jellyfin-nvidia-gpu&#34;&gt;Lxc Docker Jellyfin Nvidia Gpu&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://loveflee.github.io/p/pve/a0pve04.png&#34;
+	width=&#34;1073&#34;
+	height=&#34;554&#34;
+	srcset=&#34;https://loveflee.github.io/p/pve/a0pve04_huca2fb2a4dc83bd98087e3d6bae2aaef2_44926_480x0_resize_box_3.png 480w, https://loveflee.github.io/p/pve/a0pve04_huca2fb2a4dc83bd98087e3d6bae2aaef2_44926_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Docker-Jellyfin&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;464px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Jellyfin 搭配 Nvidia Gpu P600 轉檔加速&lt;/p&gt;
+&lt;h2 id=&#34;vm-truenas&#34;&gt;Vm Truenas&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://loveflee.github.io/p/pve/a0pve05.png&#34;
+	width=&#34;1366&#34;
+	height=&#34;601&#34;
+	srcset=&#34;https://loveflee.github.io/p/pve/a0pve05_hu5f575dc5c8cedabbc844edd3fae1a410_76731_480x0_resize_box_3.png 480w, https://loveflee.github.io/p/pve/a0pve05_hu5f575dc5c8cedabbc844edd3fae1a410_76731_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Truenas&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;227&#34;
+		data-flex-basis=&#34;545px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;Vm Truenas 用來備份 pve dataset&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

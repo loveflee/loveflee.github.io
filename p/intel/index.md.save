@@ -1,0 +1,154 @@
+---
+title: plex2
+description: intel
+date: 2019-01-02
+slug: intel
+---
+
+## 參考來源
+Intel Gpu
+</br>
+https://gist.github.com/scyto/e4e3de35ee23fdb4ae5d5a3b85c16ed3
+## Host
+安裝
+```
+apt update && apt install pve-headers-$(uname -r)
+apt install git sysfsutils dkms build-* unzip -y
+```
+新增 apt sources.list intel non-free
+```
+nano /etc/apt/sources.list
+```
+添加以下
+```
+#non-free firmwares
+deb http://deb.debian.org/debian bookworm non-free-firmware
+
+#non-free drivers and components
+deb http://deb.debian.org/debian bookworm non-free
+```
+存檔後執行
+```
+apt update && apt install intel-media-va-driver-non-free intel-gpu-tools vainfo
+```
+複製 proxmox 安裝中缺少的驅動程式，並將在 dmesg 中刪除此檔的 -2 錯誤
+```
+wget -r -nd -e robots=no -A '*.bin' --accept-regex '/plain/' https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/adlp_dmc.bin
+
+cp adlp_dmc.bin /lib/firmware/i915/
+```
+編譯並安裝新驅動程式</br>
+克隆 github 專案
+```
+cd ~
+git clone https://github.com/strongtz/i915-sriov-dkms.git
+```
+修改 dkms.conf
+```
+cd i915-sriov-dkms
+nano dkms.conf
+```
+更改這兩行，如下所示：
+```
+PACKAGE_NAME="i915-sriov-dkms"
+PACKAGE_VERSION="6.5"
+```
+保存檔案</br>
+編譯和安裝驅動程式
+```
+cd ~
+mv i915-sriov-dkms/ /usr/src/i915-sriov-dkms-6.5
+dkms install --force -m i915-sriov-dkms -v 6.5
+```
+驗證模組是否已安裝
+```
+dkms status
+```
+修改 grub
+```
+nano /etc/default/grub
+```
+修改這一行,如原本有其他新增,保持原本的不變,新增上去
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt i915.enable_guc=3 i915.max_vfs=7"
+```
+存檔退出,更新grub
+```
+update-grub
+update-initramfs -u
+```
+UEFI
+```
+proxmox-boot-tool refresh
+
+查找PCIe總線並更新 sysfs.conf
+```
+lspci | grep VGA
+```
+應該輸出
+```
+00:02.0 VGA compatible controller: Intel Corporation CoffeeLake-H GT2 [UHD Graphics 630] (rev 02)
+```
+取最左邊的數組，並按如下方式添加到 sysfs.conf 中 </BR>注意，總線路徑上的所有後續零都是必需的
+```
+echo "devices/pci0000:00/0000:00:02.0/sriov_numvfs = 7" > /etc/sysfs.conf
+```
+存檔退出 reboot</br></br>
+檢查設備
+``` dmesg | grep i915 ```
+最後兩行應如下所示：
+```
+[    7.591662] [drm] Initialized i915 1.6.0 20201103 for 0000:00:02.7 on minor 7
+[    7.591818] i915 0000:00:02.0: Enabled 7 VFs
+```
+如果沒有輸出，請仔細檢查所有步驟</br>
+使用 VAInfo 進行驗證</br>/cardN N為0-7(VGPU編號),平台不同數量不同 10代1 13代7?
+``` vainfo --display drm --device /dev/dri/cardN ```
+檢查是否可以監控 VF  如果沒有，有問題
+```
+intel_gpu_top -d drm:/dev/dri/renderD128
+
+ls -l /dev/dri
+```
+在 Proxmox 中配置 vGPU 池 </br>
+Datacenter(資料中心) > Resource Mappings </br>
+按兩下PCI設備add  </br>
+將池命名為vGPU-Pool </br>
+映射 pve 1 的所有 7 個 VF，但不映射根設備，即 0000：00：02.x 而不是 0000：00：02</br>
+點擊create </br>
+在創建的池 lcikc 上，vGPU-Pool 旁邊的加號按鈕 </br> 
+選擇節點上的映射 = PVE 2，AD 所有設備，然後按兩下創建</br>
+對 PVE3 重複上述步驟</br>
+</br>
+注意：具有PCI直通設備的計算機無法即時遷移，必須將其關閉，離線遷移到新節點，然後啟動</br>
+</br>
+每次在PROXMOX中更新內核時，都應該執行以下操作</br>
+update the kernel using proxox ui</br>
+```
+dkms install -m i915-sriov-dkms -v 6.5 --force
+reboot
+```
+>在不帶 vGPU 的情況下啟動VM，並將顯示設置為預設值
+>安裝 VirtIO 驅動程式
+>關閉虛擬機並將顯示更改為 VirtIO-GPU
+>將CPU類型更改為“host”
+>現在將 vGPU 池添加為 PCI 設備
+>創建 VM 時，添加 PCI 設備並添加 poool，如下所示：
+>現在啟動到 VM 並安裝英特爾提供的最新 IrisXe 驅動程式
+>現在，無論通過 webcolse VNC、SPICE 還是 RDP 用戶端連接，都應該有圖形加速
+
+按照指南操作，在設備管理器中看到</br>
+Microsoft 基本顯示適配器 - 如果在 VM 設置中使用“顯示”</br>
+Intel iGPU - 直通</br>
+有 2 個（或更多）選項來使用 iGPU。因為 Windows 11 自行決定使用哪種圖形</br>
+
+
+編輯windiws11 VM conf 檔並添加
+```
+args: -cpu Cooperlake,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+vmx
+```
+</br>
+</br>
+</br>
+<!-- 貼圖要在同目錄 ![圖片說明會在圖下方](圖檔檔名.jpg) -->
+<!--註解 -->

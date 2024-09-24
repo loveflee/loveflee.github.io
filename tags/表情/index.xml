@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>表情 on 填過的那些坑</title>
+        <link>https://loveflee.github.io/tags/%E8%A1%A8%E6%83%85/</link>
+        <description>Recent content in 表情 on 填過的那些坑</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://loveflee.github.io/tags/%E8%A1%A8%E6%83%85/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>表情符號支持</title>
+        <link>https://loveflee.github.io/p/%E8%A1%A8%E6%83%85%E7%AC%A6%E8%99%9F%E6%94%AF%E6%8C%81/</link>
+        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/p/%E8%A1%A8%E6%83%85%E7%AC%A6%E8%99%9F%E6%94%AF%E6%8C%81/</guid>
+        <description>&lt;img src="https://loveflee.github.io/p/%E8%A1%A8%E6%83%85%E7%AC%A6%E8%99%9F%E6%94%AF%E6%8C%81/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post 表情符號支持" /&gt;&lt;p&gt;可以透過多種方式在 Hugo 項目中啟用表情符號&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions/emojify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&lt;code&gt;表情符號&lt;/code&gt;&lt;/a&gt; 可以直接在模板或 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Inline Shortcodes&lt;/a&gt; 中呼叫&lt;/p&gt;
+&lt;p&gt;若要全域啟用表情符號，請在網站配置 &lt;code&gt;enableEmoji&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your site&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/configuration/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;configuration&lt;/a&gt; 然後可以直接在內容檔案中鍵入表情符號簡寫程式碼&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙈&lt;/span&gt; &lt;code&gt;:see_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙉&lt;/span&gt; &lt;code&gt;:hear_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙊&lt;/span&gt; &lt;code&gt;:speak_no_evil:&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;http://www.emoji-cheat-sheet.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Emoji cheat sheet&lt;/a&gt; 是表情符號速記代碼的有用參考&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt; 注意：上述步驟在 Hugo 中啟用了 Unicode 標準表情符號字元和序列，但這些字形的呈現取決於瀏覽器和平台。若要設定表情符號樣式，您可以使用第三方表情符號字體或字體堆疊；例如&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;.emoji {
+  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='intel'>
+<title>plex2</title>
+
+<link rel='canonical' href='https://loveflee.github.io/p/intel/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='plex2'>
+<meta property='og:description' content='intel'>
+<meta property='og:url' content='https://loveflee.github.io/p/intel/'>
+<meta property='og:site_name' content='填過的那些坑'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2019-01-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2019-01-02T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="plex2">
+<meta name="twitter:description" content="intel">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu05f206e38d9dbb09ca72dced91fba511_47864_300x0_resize_box_3.png" width="300"
+                            height="296" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">填過的那些坑</a></h1>
+            <h2 class="site-description">Linux is free!!My time is free??</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#參考來源">參考來源</a></li>
+    <li><a href="#host">Host</a></li>
+    <li><a href="#舊-cpu-6-10">舊 cpu 6-10</a></li>
+    <li><a href="#xeon-e3-v5-6-core-5-7">Xeon e3 v5-6 core 5-7</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/intel/">plex2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            intel
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 02, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="參考來源">參考來源</h2>
+<p>Intel Gpu
+</br>
+<a class="link" href="https://gist.github.com/scyto/e4e3de35ee23fdb4ae5d5a3b85c16ed3"  target="_blank" rel="noopener"
+    >https://gist.github.com/scyto/e4e3de35ee23fdb4ae5d5a3b85c16ed3</a></p>
+<h2 id="host">Host</h2>
+<p>安裝</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">apt update &amp;&amp; apt install pve-headers-$(uname -r)
+apt install git sysfsutils dkms build-* unzip -y
+</code></pre></td></tr></table>
+</div>
+</div><p>新增 apt sources.list intel non-free</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">nano /etc/apt/sources.list
+</code></pre></td></tr></table>
+</div>
+</div><p>添加以下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#non-free firmwares
+deb http://deb.debian.org/debian bookworm non-free-firmware
+
+#non-free drivers and components
+deb http://deb.debian.org/debian bookworm non-free
+</code></pre></td></tr></table>
+</div>
+</div><p>存檔後執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">apt update &amp;&amp; apt install intel-media-va-driver-non-free intel-gpu-tools vainfo
+</code></pre></td></tr></table>
+</div>
+</div><p>複製 proxmox 安裝中缺少的驅動程式，並將在 dmesg 中刪除此檔的 -2 錯誤</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">wget -r -nd -e robots=no -A &#39;*.bin&#39; --accept-regex &#39;/plain/&#39; https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/adlp_dmc.bin
+
+cp adlp_dmc.bin /lib/firmware/i915/
+</code></pre></td></tr></table>
+</div>
+</div><p>編譯並安裝新驅動程式</br>
+克隆 github 專案</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd ~
+git clone https://github.com/strongtz/i915-sriov-dkms.git
+</code></pre></td></tr></table>
+</div>
+</div><p>修改 dkms.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd i915-sriov-dkms
+nano dkms.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>更改這兩行，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">PACKAGE_NAME=&#34;i915-sriov-dkms&#34;
+PACKAGE_VERSION=&#34;6.5&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>保存檔案</br>
+編譯和安裝驅動程式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd ~
+mv i915-sriov-dkms/ /usr/src/i915-sriov-dkms-6.5
+dkms install --force -m i915-sriov-dkms -v 6.5
+</code></pre></td></tr></table>
+</div>
+</div><p>驗證模組是否已安裝</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dkms status
+</code></pre></td></tr></table>
+</div>
+</div><p>卸載 dkms i915</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dkms remove i915-sriov-dkms/6.5
+</code></pre></td></tr></table>
+</div>
+</div><p>修改 grub</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">nano /etc/default/grub
+</code></pre></td></tr></table>
+</div>
+</div><p>修改這一行,如原本有其他新增,保持原本的不變,新增上去</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">GRUB_CMDLINE_LINUX_DEFAULT=&#34;quiet intel_iommu=on iommu=pt i915.enable_guc=3 i915.max_vfs=7&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>存檔退出,更新grub</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">update-grub
+update-initramfs -u
+#or
+update-initramfs -c -k all
+</code></pre></td></tr></table>
+</div>
+</div><p>如update-initramfs -u </br>
+出現以下錯誤</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">W: Possible missing firmware /lib/firmware/i915/mtl_gsc_102.0.0.1511.bin for module i915
+W: Possible missing firmware /lib/firmware/i915/mtl_huc_8.4.3_gsc.bin for module i915
+W: Possible missing firmware /lib/firmware/i915/mtl_guc_70.6.4.bin for module i915
+</code></pre></td></tr></table>
+</div>
+</div><p><a class="link" href="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/"  target="_blank" rel="noopener"
+    >https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">cd ~ &amp;&amp; mkdir less &amp;&amp; cd less
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_huc_gsc.bin -O mtl_huc_8.4.3_gsc.bin
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_guc_70.bin -O mtl_guc_70.6.4.bin
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_gsc_1.bin -O mtl_gsc_102.0.0.1511.bin
+
+cp mtl_gsc_102.0.0.1511.bin mtl_huc_8.4.3_gsc.bin mtl_guc_70.6.4.bin /lib/firmware/i915/
+###以下未優化
+
+cd ~;mkdir less;cd less
+
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_huc_gsc.bin
+cp mtl_huc_gsc.bin mtl_huc_8.4.3_gsc.bin
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_guc_70.bin
+cp mtl_guc_70.bin mtl_guc_70.6.4.bin
+wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915/mtl_gsc_1.bin
+cp mtl_gsc_1.bin mtl_gsc_102.0.0.1511.bin
+
+cp mtl_gsc_102.0.0.1511.bin /lib/firmware/i915/
+cp mtl_huc_8.4.3_gsc.bin /lib/firmware/i915/
+cp mtl_guc_70.6.4.bin /lib/firmware/i915/
+</code></pre></td></tr></table>
+</div>
+</div><p>補完驅動</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">update-initramfs -u
+#or
+update-initramfs -c -k all
+</code></pre></td></tr></table>
+</div>
+</div><p>zfs uefi</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">nano /etc/kernel/cmdline
+</code></pre></td></tr></table>
+</div>
+</div><p>修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">root=ZFS=rpool/ROOT/pve-1 boot=zfs intel_iommu=on iommu=pt i915.enable_guc=3 i915.max_vfs=7
+</code></pre></td></tr></table>
+</div>
+</div><p>查找PCIe總線並更新 sysfs.conf</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">lspci | grep VGA
+</code></pre></td></tr></table>
+</div>
+</div><p>各代intel cpu 支援的gpu虛擬化列表</br>
+<a class="link" href="https://www.intel.com.tw/content/www/tw/zh/support/articles/000093216/graphics/processor-graphics.html"  target="_blank" rel="noopener"
+    >https://www.intel.com.tw/content/www/tw/zh/support/articles/000093216/graphics/processor-graphics.html</a></br>
+只有10代以上支援VGPU</br>
+應該輸出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">00:02.0 VGA compatible controller: Intel Corporation CoffeeLake-H GT2 [UHD Graphics 630] (rev 02)
+</code></pre></td></tr></table>
+</div>
+</div><p>取最左邊的數組，並按如下方式添加到 sysfs.conf 中 </BR>注意，總線路徑上的所有後續零都是必需的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo &#34;devices/pci0000:00/0000:00:02.0/sriov_numvfs = 7&#34; &gt; /etc/sysfs.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>存檔退出 reboot</br></br>
+檢查設備</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dmesg | grep i915
+</code></pre></td></tr></table>
+</div>
+</div><p>最後兩行應如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[    7.591662] [drm] Initialized i915 1.6.0 20201103 for 0000:00:02.7 on minor 7
+[    7.591818] i915 0000:00:02.0: Enabled 7 VFs
+</code></pre></td></tr></table>
+</div>
+</div><p>如果沒有輸出，請仔細檢查所有步驟</br>
+使用 VAInfo 進行驗證</br>/cardN N為0-7(VGPU編號),平台不同數量不同 10代1 13代7</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">vainfo --display drm --device /dev/dri/cardN
+</code></pre></td></tr></table>
+</div>
+</div><p>檢查是否可以監控 VF  如果沒有，有問題</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">intel_gpu_top -d drm:/dev/dri/renderD128
+
+ls -l /dev/dri
+</code></pre></td></tr></table>
+</div>
+</div><p>在 Proxmox 中配置 vGPU 池 </br>
+Datacenter(資料中心) &gt; Resource Mappings </br>
+按兩下PCI設備add  </br>
+將池命名為vGPU-Pool </br>
+映射 pve 1 的所有 7 個 VF，但不映射根設備，即 0000：00：02.x 而不是 0000：00：02</br>
+點擊create </br>
+在創建的池 lcikc 上，vGPU-Pool 旁邊的加號按鈕 </br>
+選擇節點上的映射 = PVE 2，AD 所有設備，然後按兩下創建</br>
+對 PVE3 重複上述步驟</br>
+</br>
+注意：具有PCI直通設備的計算機無法即時遷移，必須將其關閉，離線遷移到新節點，然後啟動</br>
+</br>
+每次在PROXMOX中更新內核時，都應該執行以下操作</br>
+update the kernel using proxox ui</br></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">dkms install -m i915-sriov-dkms -v 6.5 --force
+reboot
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在不帶 vGPU 的情況下啟動VM，並將顯示設置為預設值
+安裝 VirtIO 驅動程式
+關閉虛擬機並將顯示更改為 VirtIO-GPU
+將CPU類型更改為“host”
+現在將 vGPU 池添加為 PCI 設備
+創建 VM 時，添加 PCI 設備並添加 poool，如下所示：
+現在啟動到 VM 並安裝英特爾提供的最新 IrisXe 驅動程式
+現在，無論通過 webcolse VNC、SPICE 還是 RDP 用戶端連接，都應該有圖形加速</p>
+</blockquote>
+<p>按照指南操作，在設備管理器中看到</br>
+Microsoft 基本顯示適配器 - 如果在 VM 設置中使用“顯示”</br>
+Intel iGPU - 直通</br>
+有 2 個（或更多）選項來使用 iGPU。因為 Windows 11 自行決定使用哪種圖形</br></p>
+<p>編輯windiws11 VM conf 檔並添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">args: -cpu Cooperlake,hv_relaxed,hv_spinlocks=0x1fff,hv_vapic,hv_time,+vmx
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="舊-cpu-6-10">舊 cpu 6-10</h2>
+<p>直通包括獨顯+開啟內顯GVT-G</br>
+<a class="link" href="https://home.gamer.com.tw/creationDetail.php?sn=5516262"  target="_blank" rel="noopener"
+    >https://home.gamer.com.tw/creationDetail.php?sn=5516262</a></br>
+</br>
+开启iommu和GVT-g支持</br>
+<a class="link" href="https://www.xh86.me/?p=741"  target="_blank" rel="noopener"
+    >https://www.xh86.me/?p=741</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">nano /etc/kernel/cmdline
+</code></pre></td></tr></table>
+</div>
+</div><p>不要換行，往後加指令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">root=ZFS=rpool/ROOT/pve-1 boot=zfs intel_iommu=on iommu=pt pcie_acs_override=downstream video=efifb:off,vesafb:off i915.enable_guc=3 i915.max_vfs=2
+</code></pre></td></tr></table>
+</div>
+</div><p>指令解釋：</br>
+intel_iommu=on</br>
+最白話的設定，開啟IOMMU</br>
+iommu=pt</br>
+聽說是加強IOMMU的性能，也有人說不加也沒差，因為懶得比較，我就沒拿掉</br>
+pcie_acs_override=downstream</br>
+這個似乎是加強PCIE裝置的分組，我個人理解是：</br>
+沒加這行=分組後直通顯卡會包含繪圖裝置跟聲音裝置，直通一個另一個會跟著被直通</br>
+加入這行=分組後可以把繪圖裝置跟聲音裝置分別直通給不同VM</br>
+video=efifb:off,vesafb:off</br>
+包刮了video的兩個設定：</br>
+efifb:off是efi開機後載入fb0的設定，off的話當然就是不要開啟啦XD</br>
+vesafb:off是vesa程序載入fb0的設定，我也不知道是啥，反正很多人在直通時把這行也加上去了，沒試過不加，總之就跟著加了，也是設定不要開啟</br>
+</br>
+modprobe.d裡面的conf檔做設定</br></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">nano /etc/modprobe.d/user.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>檔案內容，直接用註解的方式解釋每個在做啥：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># 黑名單，不讓程式開機就載入下面的驅動程式，顯卡才能夠直通
+# A卡的驅動，我不想改就沒拿掉了
+# N卡的linux內建基本驅動
+# N卡的驅動
+# 主機板聲音卡的驅動程式
+# blacklist to stop driver loading
+blacklist radeon
+blacklist nouveau
+blacklist nvidia
+blacklist snd_hda_intel
+
+# code43迴避方式
+# 聽說VM會出現code 43，是由於顯卡知道自己在虛擬環境而發error
+# 用下面的指令讓顯卡不發error
+# 不確定，總之我是這樣認為~
+# kvm config to avoid code 43
+options kvm ignore_msrs=1
+#options report_ignored_msrs=0
+#報錯修改為下面
+options kvm report_ignored_msrs=N
+
+# 允許vfio模組發出中斷，應該是這樣
+# 因為之後會載入去給PCIE裝置，這邊要設定允許
+# IOMMU interrupts
+options vfio_iommu_type1 allow_unsafe_interrupts=1
+
+# GVT-G配置
+# gvt: 看自己要不要玩GVT-G，要=1，不要=0
+# guc: 是否開啟低功耗什麼的，有GVT-G只能=0，否則想開=2/3 (3要看CPU是否支援huc)
+# INTEL Graphic config
+options i915 enable_gvt=1
+#options i915 enable_guc=0
+
+# 設定ZFS只能使用這麼多記憶體
+# 設定邏輯就是預設2G + ((儲存空間每1T)=1G) * (16+1+1) = 20G，然後換算成byte
+# ZFS config
+#options zfs zfs_arc_max=21474836480
+</code></pre></td></tr></table>
+</div>
+</div><p>此篇結束!</p>
+<h2 id="xeon-e3-v5-6-core-5-7">Xeon e3 v5-6 core 5-7</h2>
+<p>參考</br>
+<a class="link" href="https://www.xh86.me/?p=741"  target="_blank" rel="noopener"
+    >https://www.xh86.me/?p=741</a></br>
+intel gvt-g技術，目前只支援第五代，第六代和第七代英特爾core處理器以及E3 v4，E3 v5和E3 v6 Xeon處理器</br>
+開啟iommu和GVT-g
+參考2</br>
+<a class="link" href="https://cetteup.com/216/how-to-use-an-intel-vgpu-for-plexs-hardware-accelerated-streaming-in-a-proxmox-vm/"  target="_blank" rel="noopener"
+    >https://cetteup.com/216/how-to-use-an-intel-vgpu-for-plexs-hardware-accelerated-streaming-in-a-proxmox-vm/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#grub
+nano /etc/default/grub
+#or zfs uefi
+nano /etc/kernel/cmdline
+</code></pre></td></tr></table>
+</div>
+</div><p>修改</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">#grub
+GRUB_CMDLINE_LINUX_DEFAULT=&#34;quiet intel_iommu=on i915.enable_gvt=1&#34;
+#zfs uefi
+root=ZFS=rpool/ROOT/pve-1 boot=zfs intel_iommu=on iommu=pt i915.enable_gvt=1
+</code></pre></td></tr></table>
+</div>
+</div><p>增加直通内核模塊</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo vfio &gt;&gt; /etc/modules
+echo vfio_iommu_type1 &gt;&gt; /etc/modules
+echo vfio_pci &gt;&gt; /etc/modules
+echo vfio_virqfd &gt;&gt; /etc/modules
+echo kvmgt &gt;&gt; /etc/modules
+</code></pre></td></tr></table>
+</div>
+</div><p>查看顯卡編號(示例:編號需修改成自己的)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">lspci -n -s 00:02.0
+00:02.0 0380: 8086:3e90
+</code></pre></td></tr></table>
+</div>
+</div><p>將 8086:3e90 加入直通</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">echo &#34;options vfio-pci ids=8086:3e90&#34; &gt; /etc/modprobe.d/vfio.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>更新grub與開機載入模塊</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">update-grub
+update-initramfs -c -k all
+</code></pre></td></tr></table>
+</div>
+</div><p>驗證 (02為intel gpu 如不同換成設備編號)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">ls /sys/bus/pci/devices/0000:00:02.0/mdev_supported_types/
+</code></pre></td></tr></table>
+</div>
+</div></br>
+</br>
+</br>
+<!-- 貼圖要在同目錄 ![圖片說明會在圖下方](%E5%9C%96%E6%AA%94%E6%AA%94%E5%90%8D.jpg) -->
+<!--註解 -->
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 Example Person
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

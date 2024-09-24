@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 填過的那些坑</title>
+        <link>https://loveflee.github.io/categories/</link>
+        <description>Recent content in Categories on 填過的那些坑</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>Example Person</copyright>
+        <lastBuildDate>Sat, 21 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://loveflee.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>docker</title>
+        <link>https://loveflee.github.io/categories/docker/</link>
+        <pubDate>Sat, 21 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/docker/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LXC</title>
+        <link>https://loveflee.github.io/categories/lxc/</link>
+        <pubDate>Mon, 16 Sep 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/lxc/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>pve</title>
+        <link>https://loveflee.github.io/categories/pve/</link>
+        <pubDate>Wed, 24 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/pve/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://loveflee.github.io/categories/test/</link>
+        <pubDate>Wed, 29 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/test/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>語法</title>
+        <link>https://loveflee.github.io/categories/%E8%AA%9E%E6%B3%95/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/%E8%AA%9E%E6%B3%95/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>markdown</title>
+        <link>https://loveflee.github.io/categories/markdown/</link>
+        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://loveflee.github.io/categories/markdown/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
